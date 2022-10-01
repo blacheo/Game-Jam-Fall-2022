@@ -1,9 +1,19 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://GI game jam Fall 2022/platform.png" type="Texture" id=1]
+[ext_resource path="res://GI game jam Fall 2022/ground texture.png" type="Texture" id=1]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D"]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 966.5, 27.5 )
 
-[node name="Platform" type="Sprite" parent="."]
-position = Vector2( 266, 10 )
+[node name="Platform" type="StaticBody2D"]
+position = Vector2( 0, -9 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1359.77, -25.5895 )
+scale = Vector2( 2.61924, 0.57193 )
 texture = ExtResource( 1 )
+offset = Vector2( -149, -249 )
+
+[node name="StaticBody2D" type="CollisionShape2D" parent="."]
+position = Vector2( 969.5, -30.5 )
+shape = SubResource( 1 )
