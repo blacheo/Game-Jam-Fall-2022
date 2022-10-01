@@ -31,7 +31,6 @@ animations = [ {
 } ]
 
 [node name="Player" type="Area2D"]
-position = Vector2( 18, 253 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -40,8 +39,10 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "idle"
-frame = 2
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( 0, -4, -182, 49, -258, 149, -76, 202, -20, 223, -26, 311, 109, 349, 147, 328, 153, 267, 100, 267, 86, 231, 130, 184, 203, 96, 224, -4, 186, -142, 230, -186, 297, -209, 297, -239, 183, -309, 115, -286, 45, -215, 56, -92 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 300, 0 )
