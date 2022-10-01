@@ -1,10 +1,10 @@
 extends KinematicBody2D
 
-const ZERO_VELOCITY_Y = 3.4
+const ZERO_VELOCITY_Y = 6.7
 
 const RUN_SPEED = 350
-const JUMP_SPEED = 200 # Pixels up
-const GRAVITY = 200
+const JUMP_SPEED = 400 # Pixels up
+const GRAVITY = 400
 
 var velocity = Vector2()
 
@@ -16,7 +16,7 @@ func get_input():
 
 	if is_on_floor() and jump:
 		velocity.y -= JUMP_SPEED
-		
+	
 	if right:
 		velocity.x += RUN_SPEED
 		$AnimatedSprite.flip_h = false
@@ -24,6 +24,7 @@ func get_input():
 		velocity.x -= RUN_SPEED
 		$AnimatedSprite.flip_h = true
 	
+	print(velocity.y)
 	if abs(velocity.x) > 0 or abs(velocity.y) > ZERO_VELOCITY_Y:
 		$AnimatedSprite.animation = "running"
 	else:
