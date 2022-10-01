@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://GI game jam Fall 2022/Goose idle 1.png" type="Texture" id=2]
@@ -30,8 +30,12 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Player" type="Area2D"]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 259.5, 308 )
+
+[node name="Player" type="KinematicBody2D"]
 position = Vector2( 18, 253 )
+collision_layer = 15
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -40,8 +44,8 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "idle"
-frame = 1
 playing = true
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 0, -4, -182, 49, -258, 149, -76, 202, -20, 223, -26, 311, 109, 349, 147, 328, 153, 267, 100, 267, 86, 231, 130, 184, 203, 96, 224, -4, 186, -142, 230, -186, 297, -209, 297, -239, 183, -309, 115, -286, 45, -215, 56, -92 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 27.5, 17 )
+shape = SubResource( 2 )
