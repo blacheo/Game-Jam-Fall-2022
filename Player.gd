@@ -6,6 +6,7 @@ const RUN_SPEED = 350
 const JUMP_SPEED = 400 # Pixels up
 const GRAVITY = 400
 var health = 3
+var bossHealth = 40
 
 var velocity = Vector2()
 
@@ -27,6 +28,7 @@ func get_input():
 		$AnimatedSprite.flip_h = true
 
 	updateHearts()
+	updateBossBar()
 	if abs(velocity.x) > 0 or abs(velocity.y) > ZERO_VELOCITY_Y:
 		$AnimatedSprite.animation = "running"
 	else:
@@ -40,14 +42,16 @@ func _physics_process(delta):
 
 func updateHearts():
 	if health == 3:
-		$Heart1.visible = true
-		$Heart2.visible = true
-		$Heart3.visible = true
+		get_node("/root/Node/Camera2D/Heart1").visible = true
+		get_node("/root/Node/Camera2D/Heart2").visible = true
+		get_node("/root/Node/Camera2D/Heart3").visible = true
 	elif health == 2:
-		$Heart1.visible = true
-		$Heart2.visible = true
-		$Heart3.visible = false
+		get_node("/root/Node/Camera2D/Heart1").visible = true
+		get_node("/root/Node/Camera2D/Heart2").visible = true
+		get_node("/root/Node/Camera2D/Heart3").visible = false
 	elif health == 1:
-		$Heart1.visible = true
-		$Heart2.visible = false
-		$Heart3.visible = false
+		get_node("/root/Node/Camera2D/Heart1").visible = true
+		get_node("/root/Node/Camera2D/Heart2").visible = false
+		get_node("/root/Node/Camera2D/Heart3").visible = false
+func updateBossBar():
+	get_node("/root/Node/Camera2D/TextureProgress").value = bossHealth
