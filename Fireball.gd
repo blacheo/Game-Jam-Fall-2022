@@ -12,9 +12,13 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
+	if position.y >= 600:
+		queue_free()
 	var velocity = Vector2(randf(), randf()).normalized()
 	velocity = velocity.normalized() * speed
 	position += velocity * delta
+
+
 
 
 
