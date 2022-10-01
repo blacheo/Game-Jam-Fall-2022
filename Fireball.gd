@@ -1,6 +1,6 @@
 extends KinematicBody2D
-export var speed = 100
-export var firing = false
+export var speed = 250
+
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -12,9 +12,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
-	if !firing:
-		return
-	var velocity = Vector2(1, 1)
+	var velocity = Vector2(randf(), randf()).normalized()
 	velocity = velocity.normalized() * speed
 	position += velocity * delta
 
