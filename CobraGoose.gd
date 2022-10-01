@@ -9,6 +9,7 @@ export var multiplier = 1
 export var bossHealth = 100
 export var livesLeft = 10
 export var charging = false
+var fireballThresh = 640
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,7 +19,7 @@ func _ready():
 func _process(delta):
 	if position.x > 1300:
 		position.x = 1200
-	print(position.x)
+	print(position.y)
 	if bossHealth <= 0 and livesLeft > 0:
 		bossHealth = 100
 		multiplier += 1
@@ -33,7 +34,7 @@ func _process(delta):
 			velocity.x = 0 	
 			dir *= -1
 			$AnimatedSprite.flip_h = !$AnimatedSprite.flip_h
-		if position.x <= 500:
+		if position.x <= fireballThresh:
 			$AnimatedSprite.animation = "spit"
 			for _i in range(multiplier):
 				if flag:
@@ -59,6 +60,6 @@ func _process(delta):
 	if abs(velocity.x) > 0:
 		velocity = velocity * speed * multiplier
 	position += velocity * delta
-	if position.x > 500:
+	if position.x > fireballThresh:
 		flag = true
 
