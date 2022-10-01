@@ -1,37 +1,57 @@
-extends Area2D
+extends KinematicBody2D
 
-export var speed = 400
-export var x = 0
-export var y = 0
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+const ZERO_VELOCITY_Y = 6.7
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+const RUN_SPEED = 350
+const JUMP_SPEED = 400 # Pixels up
+const GRAVITY = 400
+var health = 3
+var bossHealth = 40
 
+var velocity = Vector2()
 
-func _process(delta):
-	x = position.x
-	y = position.y
-	var velocity = Vector2.ZERO # The player's movement vector.
-	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
+func get_input():
+	velocity.x = 0
+	var right = Input.is_action_pressed('ui_right')
+	var left = Input.is_action_pressed('ui_left')
+	var jump = Input.is_action_just_pressed('ui_up')
+
+	# $Heart1.visible = not $Heart1.visible
+	if is_on_floor() and jump:
+		velocity.y -= JUMP_SPEED
+
+	if right:
+		velocity.x += RUN_SPEED
 		$AnimatedSprite.flip_h = false
-	if Input.is_action_pressed("move_left"):
-		velocity.x -= 1
+	if left:
+		velocity.x -= RUN_SPEED
 		$AnimatedSprite.flip_h = true
-	if Input.is_action_just_pressed("ui_up"):
-		velocity.y -= 10000
-	
 
-	if abs(velocity.x) > 0:
-		velocity = velocity.normalized() * speed
+	updateHearts()
+	updateBossBar()
+	if abs(velocity.x) > 0 or abs(velocity.y) > ZERO_VELOCITY_Y:
 		$AnimatedSprite.animation = "running"
 	else:
 		$AnimatedSprite.animation = "idle"
-	if abs(velocity.y) > 0:
-		for _i in range(velocity.y):
-			position += velocity.normalized().y * delta
-	position += velocity * delta
+
+
+func _physics_process(delta):
+	velocity.y += GRAVITY * delta
+	get_input()
+	velocity = move_and_slide(velocity, Vector2(0, -1))
+
+func updateHearts():
+	if health == 3:
+		get_node("/root/Node/Camera2D/Heart1").visible = true
+		get_node("/root/Node/Camera2D/Heart2").visible = true
+		get_node("/root/Node/Camera2D/Heart3").visible = true
+	elif health == 2:
+		get_node("/root/Node/Camera2D/Heart1").visible = true
+		get_node("/root/Node/Camera2D/Heart2").visible = true
+		get_node("/root/Node/Camera2D/Heart3").visible = false
+	elif health == 1:
+		get_node("/root/Node/Camera2D/Heart1").visible = true
+		get_node("/root/Node/Camera2D/Heart2").visible = false
+		get_node("/root/Node/Camera2D/Heart3").visible = false
+func updateBossBar():
+	get_node("/root/Node/Camera2D/TextureProgress").value = bossHealth

@@ -1,5 +1,6 @@
-extends KinematicBody2D
-export var speed = 250
+extends CanvasLayer
+
+signal start_game
 
 
 # Declare member variables here. Examples:
@@ -9,13 +10,7 @@ export var speed = 250
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-func _process(delta):
-	var velocity = Vector2(randf(), randf()).normalized()
-	velocity = velocity.normalized() * speed
-	position += velocity * delta
-
+	show_TextureRect
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

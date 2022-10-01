@@ -1,5 +1,4 @@
-extends KinematicBody2D
-export var speed = 250
+extends AnimatedSprite
 
 
 # Declare member variables here. Examples:
@@ -11,13 +10,23 @@ export var speed = 250
 func _ready():
 	pass # Replace with function body.
 
-func _process(delta):
-	var velocity = Vector2(randf(), randf()).normalized()
-	velocity = velocity.normalized() * speed
-	position += velocity * delta
-
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Exit_focus_entered():
+	animation = "hover"
+
+
+func _on_Exit_mouse_entered():
+	animation = "hover"
+
+
+func _on_Exit_focus_exited():
+	animation = "default"
+
+
+func _on_Exit_mouse_exited():
+	animation = "default"
