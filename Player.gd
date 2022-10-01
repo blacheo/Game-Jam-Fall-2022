@@ -21,9 +21,12 @@ func _process(delta):
 		$AnimatedSprite.flip_h = true
 	if Input.is_action_pressed("ui_up"):
 		velocity.y -= 1
+
+	if position.y < 100: # this will need to be the platform height instead of a fixed number.
+		velocity.y += 0.2
 	
 
-	if abs(velocity.x) > 0:
+	if abs(velocity.x) > 0 or abs(velocity.y) > 0:
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite.animation = "running"
 	else:
