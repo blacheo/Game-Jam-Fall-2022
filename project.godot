@@ -11,8 +11,9 @@ config_version=4
 [application]
 
 config/name="Goose Game"
-run/main_scene="res://videos/video.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://Main.tscn"
+boot_splash/show_image=false
+config/icon="res://Team_GigaGeese_icon.png"
 
 [display]
 
