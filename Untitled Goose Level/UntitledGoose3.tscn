@@ -30,7 +30,6 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource( 1 )
-disabled = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="CollisionShape2D"]
 position = Vector2( -7.0979, 0.0457764 )
