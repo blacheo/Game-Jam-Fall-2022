@@ -35,15 +35,12 @@ position = Vector2( 1, -19 )
 collision_layer = 15
 script = ExtResource( 1 )
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 1, -3, -78, 9, -160, 46, -227, 96, -251, 157, -251, 171, -191, 177, -136, 182, -82, 194, -23, 219, -18, 232, -17, 274, -20, 307, 26, 330, 112, 345, 151, 327, 152, 278, 102, 267, 87, 232, 95, 206, 165, 149, 214, 76, 218, -12, 183, -151, 207, -176, 262, -191, 300, -213, 300, -237, 175, -299, 144, -291, 124, -284, 57, -220, 51, -161, 55, -92, 57, -50 )
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -1, 1 )
+position = Vector2( 1, 2 )
 frames = SubResource( 1 )
 animation = "idle"
 frame = 2
 playing = true
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -3, -11, -78, 9, -130, 25, -210, 73, -245, 119, -250, 144, -253, 166, -204, 175, -136, 177, -82, 194, -23, 219, -18, 232, -17, 274, -20, 307, 26, 330, 112, 345, 151, 327, 152, 278, 102, 267, 87, 232, 95, 206, 165, 149, 211, 77, 214, -8, 181, -149, 208, -175, 262, -190, 298, -213, 299, -235, 252, -254, 172, -300, 125, -285, 86, -256, 55, -214, 49, -163, 54, -44, 18, -14 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
