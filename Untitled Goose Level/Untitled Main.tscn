@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Untitled Goose Level/TextureRect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Untitled Goose Level/Player - L1.tscn" type="PackedScene" id=2]
@@ -6,10 +6,11 @@
 [ext_resource path="res://GI game jam Fall 2022/Boss health bar.png" type="Texture" id=4]
 [ext_resource path="res://GI game jam Fall 2022/boss health bar filler (put behind).png" type="Texture" id=5]
 [ext_resource path="res://Untitled Goose Level/Platforms L1.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Untitled Goose Level/Enemy Untitled Goose.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Untitled Goose Level/UntitledGoose2.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Untitled Goose Level/UntitledGoose1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Untitled Goose Level/Untitled Main.gd" type="Script" id=9]
 [ext_resource path="res://Untitled Goose Level/UntitledGoose3.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Untitled Goose Level/Player - L1.gd" type="Script" id=11]
 
 [node name="Node" type="Node"]
 script = ExtResource( 9 )
@@ -23,6 +24,7 @@ margin_bottom = 22.0
 [node name="Player - L1" parent="." instance=ExtResource( 2 )]
 position = Vector2( 36, 504 )
 scale = Vector2( 0.15, 0.15 )
+script = ExtResource( 11 )
 
 [node name="HUD" type="Camera2D" parent="."]
 
@@ -66,15 +68,15 @@ fill_mode = 1
 position = Vector2( -26, 610 )
 scale = Vector2( 0.547506, 0.608256 )
 
-[node name="UntitledGoose2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 832, 126 )
-
 [node name="UntitledGoose1" parent="." instance=ExtResource( 8 )]
 position = Vector2( 965, 544 )
+
+[node name="UntitledGoose2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 832, 126 )
 
 [node name="UntitledGoose3" parent="." instance=ExtResource( 10 )]
 position = Vector2( 116, 542 )
 
-[connection signal="caught" from="UntitledGoose2" to="." method="_on_UntitledGoose2_caught"]
 [connection signal="caught" from="UntitledGoose1" to="." method="_on_UntitledGoose1_caught"]
+[connection signal="caught" from="UntitledGoose2" to="." method="_on_UntitledGoose2_caught"]
 [connection signal="caught" from="UntitledGoose3" to="." method="_on_UntitledGoose3_caught"]
