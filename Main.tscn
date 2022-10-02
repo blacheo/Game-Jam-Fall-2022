@@ -23,7 +23,7 @@ texture = ExtResource( 3 )
 stretch_mode = 2
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 332, 768 )
+position = Vector2( 1053, 862 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="Platform" parent="." instance=ExtResource( 2 )]
@@ -67,6 +67,7 @@ margin_top = -555.0
 margin_right = 959.0
 margin_bottom = -309.0
 grow_horizontal = 0
+max_value = 10000.0
 value = 50.0
 texture_over = ExtResource( 5 )
 texture_progress = ExtResource( 6 )

@@ -62,7 +62,7 @@ func _physics_process(delta):
 			health -= 1
 			if health < 0:
 				health = 0
-			position.y = 0
+			position = Vector2(1053, 862)
 			get_node("/root/Node/Camera2D/Heart1").visible = false
 			get_node("/root/Node/Camera2D/Heart2").visible = false
 			get_node("/root/Node/Camera2D/Heart3").visible = false

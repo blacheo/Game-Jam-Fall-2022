@@ -46,11 +46,11 @@ position = Vector2( 1934, -3 )
 shape = SubResource( 2 )
 
 [node name="Platform" type="CollisionShape2D" parent="."]
-position = Vector2( 254, -225 )
+position = Vector2( 256, -188 )
 shape = SubResource( 3 )
 
 [node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( 254, -265 )
+position = Vector2( 254, -225 )
 scale = Vector2( 0.674797, 0.735088 )
 texture = ExtResource( 2 )
 
