@@ -56,7 +56,7 @@ animations = [ {
 [node name="Pause Menu" type="Node"]
 script = ExtResource( 4 )
 
-[node name="Resume" type="Button" parent="."]
+[node name="Play" type="Button" parent="."]
 margin_left = 407.0
 margin_top = 51.0
 margin_right = 604.0
@@ -65,7 +65,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="PlayButtonSprite" type="AnimatedSprite" parent="Resume"]
+[node name="PlayButtonSprite" type="AnimatedSprite" parent="Play"]
 position = Vector2( 101, 60 )
 scale = Vector2( 0.954259, 0.948598 )
 z_index = 1
@@ -119,10 +119,10 @@ margin_bottom = 600.0
 mouse_filter = 2
 script = ExtResource( 8 )
 
-[connection signal="focus_entered" from="Resume" to="Resume/PlayButtonSprite" method="_on_Resume_focus_entered"]
-[connection signal="focus_exited" from="Resume" to="Resume/PlayButtonSprite" method="_on_Resume_focus_exited"]
-[connection signal="mouse_entered" from="Resume" to="Resume/PlayButtonSprite" method="_on_Resume_mouse_entered"]
-[connection signal="mouse_exited" from="Resume" to="Resume/PlayButtonSprite" method="_on_Resume_mouse_exited"]
+[connection signal="focus_entered" from="Play" to="Play/PlayButtonSprite" method="_on_Play_focus_entered"]
+[connection signal="focus_exited" from="Play" to="Play/PlayButtonSprite" method="_on_Play_focus_exited"]
+[connection signal="mouse_entered" from="Play" to="Play/PlayButtonSprite" method="_on_Play_mouse_entered"]
+[connection signal="mouse_exited" from="Play" to="Play/PlayButtonSprite" method="_on_Play_mouse_exited"]
 [connection signal="focus_entered" from="Main Menu" to="Main Menu/MainMenuButtonSprite" method="_on_Main_Menu_focus_entered"]
 [connection signal="focus_exited" from="Main Menu" to="Main Menu/MainMenuButtonSprite" method="_on_Main_Menu_focus_exited"]
 [connection signal="mouse_entered" from="Main Menu" to="Main Menu/MainMenuButtonSprite" method="_on_Main_Menu_mouse_entered"]

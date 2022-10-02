@@ -16,17 +16,17 @@ func _ready():
 #	pass
 
 
-func _on_Resume_focus_entered():
+func _on_Play_focus_entered():
 	animation = "hover"
 
 
-func _on_Resume_focus_exited():
+func _on_Play_focus_exited():
 	animation = "default"
 
 
-func _on_Resume_mouse_entered():
+func _on_Play_mouse_entered():
 	animation = "hover"
 
 
-func _on_Resume_mouse_exited():
+func _on_Play_mouse_exited():
 	animation = "default"
