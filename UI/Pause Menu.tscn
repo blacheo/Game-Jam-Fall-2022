@@ -98,6 +98,7 @@ margin_left = 409.0
 margin_top = 433.0
 margin_right = 615.0
 margin_bottom = 552.0
+action_mode = 0
 __meta__ = {
 "_edit_group_": true
 }
@@ -119,15 +120,21 @@ margin_bottom = 600.0
 mouse_filter = 2
 script = ExtResource( 8 )
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.415686, 0.639216, 0.788235, 1 )
+
 [connection signal="focus_entered" from="Play" to="Play/PlayButtonSprite" method="_on_Play_focus_entered"]
 [connection signal="focus_exited" from="Play" to="Play/PlayButtonSprite" method="_on_Play_focus_exited"]
 [connection signal="mouse_entered" from="Play" to="Play/PlayButtonSprite" method="_on_Play_mouse_entered"]
 [connection signal="mouse_exited" from="Play" to="Play/PlayButtonSprite" method="_on_Play_mouse_exited"]
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
 [connection signal="focus_entered" from="Main Menu" to="Main Menu/MainMenuButtonSprite" method="_on_Main_Menu_focus_entered"]
 [connection signal="focus_exited" from="Main Menu" to="Main Menu/MainMenuButtonSprite" method="_on_Main_Menu_focus_exited"]
 [connection signal="mouse_entered" from="Main Menu" to="Main Menu/MainMenuButtonSprite" method="_on_Main_Menu_mouse_entered"]
 [connection signal="mouse_exited" from="Main Menu" to="Main Menu/MainMenuButtonSprite" method="_on_Main_Menu_mouse_exited"]
+[connection signal="pressed" from="Main Menu" to="." method="_on_Main_Menu_pressed"]
 [connection signal="focus_entered" from="Exit" to="Exit/ExitButtonSprite" method="_on_Exit_focus_entered"]
 [connection signal="focus_exited" from="Exit" to="Exit/ExitButtonSprite" method="_on_Exit_focus_exited"]
 [connection signal="mouse_entered" from="Exit" to="Exit/ExitButtonSprite" method="_on_Exit_mouse_entered"]
 [connection signal="mouse_exited" from="Exit" to="Exit/ExitButtonSprite" method="_on_Exit_mouse_exited"]
+[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]

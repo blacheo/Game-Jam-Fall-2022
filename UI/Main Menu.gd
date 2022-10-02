@@ -1,11 +1,14 @@
 extends Node
-signal unpause
-signal return_to_main_menu
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,11 +18,3 @@ func _ready():
 
 func _on_Exit_pressed():
 	get_tree().quit()
-
-
-func _on_Play_pressed():
-	emit_signal("unpause")
-
-
-func _on_Main_Menu_pressed():
-	emit_signal("return_to_main_menu")
