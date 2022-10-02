@@ -14,6 +14,10 @@ config/name="Goose Game"
 run/main_scene="res://videos/video.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/fullscreen=true
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
