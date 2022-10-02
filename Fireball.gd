@@ -1,6 +1,6 @@
 extends KinematicBody2D
 export var speed = 250
-var velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized()
+var velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() # replace this with player position
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -10,7 +10,6 @@ var velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	position = Vector2(640, 279)
-	pass # Replace with function body.
 
 func _process(delta):
 	if position.y >= 600 or position.y <= 0:
