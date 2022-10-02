@@ -11,8 +11,12 @@ config_version=4
 [application]
 
 config/name="Goose Game"
-run/main_scene="res://Player.tscn"
+run/main_scene="res://videos/video.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/fullscreen=true
 
 [gui]
 

@@ -26,5 +26,4 @@ shape = SubResource( 1 )
 position = Vector2( 1.00001, 0.250002 )
 scale = Vector2( 0.368421, 0.300135 )
 frames = SubResource( 2 )
-frame = 1
 playing = true

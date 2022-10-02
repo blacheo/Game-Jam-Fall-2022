@@ -1,4 +1,4 @@
-extends AnimatedSprite
+extends Node
 
 
 # Declare member variables here. Examples:
@@ -16,17 +16,5 @@ func _ready():
 #	pass
 
 
-func _on_Play_focus_entered():
-	animation = "hover"
-
-
-func _on_Play_focus_exited():
-	animation = "default"
-
-
-func _on_Play_mouse_entered():
-	animation = "hover"
-
-
-func _on_Play_mouse_exited():
-	animation = "default"
+func _on_Exit_pressed():
+	get_tree().quit()
