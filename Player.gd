@@ -17,11 +17,6 @@ func _ready():
 
 func shoot():
 	get_parent().add_child(bullet)
-	#var timer = Timer.new()
-	#timer.connect("timeout", self, "_on_timer_timeout")
-	#get_parent().add_child(timer)
-	#timer.start()
-	#$Gun.animation = "fired"
 	
 	if $AnimatedSprite.flip_h:
 		$Position2D.position = $AnimatedSprite.position - Vector2(300, 0)
@@ -30,7 +25,7 @@ func shoot():
 	else:	
 		bullet.flip_h($AnimatedSprite.flip_h)
 		bullet.position = $Position2D.global_position
-	bullet.shoot(global_position)
+
 	$CooldownTimer.start()
 	
 
@@ -69,11 +64,5 @@ func _process(delta):
 		bullet.position -= Vector2(bullet.bulletSpeed, 0)
 	else:
 		bullet.position += Vector2(bullet.bulletSpeed,0)
-	#	bullet.position -= Vector2(80,0) 
-	#else:	
-	#	bullet.position += Vector2(80,0)
-	
-	#if bullet.position.x > get_viewport().get_visible_rect().size.x or bullet.position.x < 0:
-	#	bullet.access_node().queue_free()
 
 
