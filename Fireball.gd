@@ -15,10 +15,8 @@ func _ready():
 	
 
 func _process(delta):
-	# if (position.y >= screenCenter.y*2 or 
-	# 	position.y >= 0 or position.x >= 0 or 
-	# 	position.x >= screenCenter.x*2):
-	# 	queue_free()
+	if (position.y >= 1200):
+		queue_free()
 	velocity = velocity.normalized() * speed
 	position += velocity * delta
 	

@@ -7,6 +7,7 @@ var flag = true
 var flag2 = false
 var playerPos = Vector2(0, 0)
 var sCenter = Vector2(0, 0)
+var canFireball = true
 export var multiplier = 1
 export var bossHealth = 100
 export var livesLeft = 10
@@ -36,7 +37,7 @@ func _process(delta):
 			velocity.x = 0 	
 			dir *= -1
 			$AnimatedSprite.flip_h = !$AnimatedSprite.flip_h
-		if abs(position.x-playerPos.x) <= 50:
+		if abs(position.x-playerPos.x) <= 50 and canFireball:
 			$AnimatedSprite.animation = "spit"
 			for _i in range(multiplier):
 				if flag:
