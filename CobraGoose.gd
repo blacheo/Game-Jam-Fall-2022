@@ -5,6 +5,8 @@ var dir = 1
 var fireball = preload("res://Fireball.tscn")
 var flag = true
 var flag2 = false
+var playerPos = Vector2(0, 0)
+var sCenter = Vector2(0, 0)
 export var multiplier = 1
 export var bossHealth = 100
 export var livesLeft = 10
@@ -14,7 +16,7 @@ onready var fireballThresh = screen.x/2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
 func _process(delta):
@@ -40,6 +42,8 @@ func _process(delta):
 				if flag:
 					var fb = fireball.instance()
 					get_parent().add_child(fb)
+					fb.velocity = playerPos
+					fb.position = position
 			flag = false
 		else:
 			$AnimatedSprite.animation = "default"

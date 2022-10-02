@@ -40,29 +40,39 @@ position = Vector2( 1934, -3 )
 shape = SubResource( 2 )
 
 [node name="Platform" type="CollisionShape2D" parent="."]
-position = Vector2( 597, -123 )
+position = Vector2( 254, -225 )
 shape = SubResource( 3 )
 
 [node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( 575, -163 )
+position = Vector2( 254, -265 )
 scale = Vector2( 0.674797, 0.735088 )
 texture = ExtResource( 2 )
 
-[node name="Sprite3" type="Sprite" parent="."]
-position = Vector2( 1069, -227 )
+[node name="Sprite5" type="Sprite" parent="."]
+position = Vector2( 1020, -180 )
 scale = Vector2( 0.649051, 0.691228 )
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
-position = Vector2( 1081, -185 )
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
+position = Vector2( 1020, -137 )
+scale = Vector2( 0.649051, 0.691228 )
+shape = SubResource( 4 )
+
+[node name="Sprite7" type="Sprite" parent="."]
+position = Vector2( 962.5, -461 )
+scale = Vector2( 0.649051, 0.691228 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="."]
+position = Vector2( 974.5, -419 )
 scale = Vector2( 0.649051, 0.691228 )
 shape = SubResource( 4 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
-position = Vector2( 1535, -265 )
+position = Vector2( 1556, -244 )
 shape = SubResource( 5 )
 
 [node name="Sprite4" type="Sprite" parent="."]
-position = Vector2( 1531, -288 )
+position = Vector2( 1535, -265 )
 scale = Vector2( 0.665989, 0.528947 )
 texture = ExtResource( 2 )
