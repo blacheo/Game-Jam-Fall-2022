@@ -1,7 +1,7 @@
 extends KinematicBody2D
 export var speed = 250
 var velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized()
-
+onready var screen = get_viewport().get_visible_rect().size
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -13,7 +13,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
-	if position.y >= 600 or position.y <= 0:
+	if position.y >= screen.y or position.y <= 0 or position.x <= 0 or position.x >= screen.x:
 		queue_free()
 	velocity = velocity.normalized() * speed
 	position += velocity * delta

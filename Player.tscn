@@ -42,4 +42,5 @@ polygon = PoolVector2Array( 1, -3, -78, 9, -160, 46, -227, 96, -251, 157, -251, 
 position = Vector2( 1, 2 )
 frames = SubResource( 1 )
 animation = "idle"
+frame = 2
 playing = true
