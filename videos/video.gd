@@ -16,6 +16,10 @@ func _ready():
 #func _process(delta):
 #	pass
 
+#Code to allow video to be skippable
+func _input(event):
+	if event.is_pressed():
+		goto_scene("res://UI/Main Menu.tscn")
 
 func _on_VideoPlayer_finished():
 	goto_scene("res://UI/Main Menu.tscn")
