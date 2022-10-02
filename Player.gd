@@ -21,6 +21,10 @@ onready var screen = get_viewport().get_visible_rect().size
 
 
 func get_input():
+	if health <= 0:
+		$AnimatedSprite.animation = "dead"
+		velocity = Vector2.ZERO
+		return
 	velocity.x = 0
 	var right = Input.is_action_pressed('ui_right')
 	var left = Input.is_action_pressed('ui_left')
@@ -46,19 +50,25 @@ func get_input():
 
 
 func _physics_process(delta):
-	# if position.y <= screen.y:
-	# 	health -= 1
+	if health <= 0:
+		$AnimatedSprite.animation = "dead"
+		return
 	velocity.y += GRAVITY * delta
 	get_input()
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)
 		var body = collision.collider
-		if body.name in ["CobraGoose"] or "Fireball" in body.name:
+		if body.name in ["CobraGoose"] or "Fireball" in body.name and $AnimatedSprite.animation != "hurt":
+			$AnimatedSprite.animation = "hurt"
 			health -= 1
 			if health < 0:
 				health = 0
 			position.y = 0
+			get_node("/root/Node/Camera2D/Heart1").visible = false
+			get_node("/root/Node/Camera2D/Heart2").visible = false
+			get_node("/root/Node/Camera2D/Heart3").visible = false
+			return
 
 
 func update_hearts():
