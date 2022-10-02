@@ -1,4 +1,6 @@
-extends KinematicBody2D
+extends KinematicBody2D 
+
+signal collided
 
 # Constants
 const ZERO_VELOCITY_Y = 6.7
@@ -12,8 +14,11 @@ const HEART_MAX = 3 # Make sure to create this number of heart nodes
 
 # Variables
 var health = 3
-var bossHealth = 40
+var bossHealth = 100
 var velocity = Vector2()
+
+onready var screen = get_viewport().get_visible_rect().size
+
 
 func get_input():
 	velocity.x = 0
@@ -41,15 +46,25 @@ func get_input():
 
 
 func _physics_process(delta):
+	# if position.y <= screen.y:
+	# 	health -= 1
 	velocity.y += GRAVITY * delta
 	get_input()
 	velocity = move_and_slide(velocity, Vector2(0, -1))
+	for index in get_slide_count():
+		var collision = get_slide_collision(index)
+		var body = collision.collider
+		if body.name in ["CobraGoose"] or "Fireball" in body.name:
+			health -= 1
+			if health < 0:
+				health = 0
+			position.y = 0
 
 
 func update_hearts():
 	# Makes sure that the number of hearts are within a valid range and loops over them
 	# Was tested for health = 0 to 5 (inclusive)
-	if 0 < health and health <= HEART_MAX:
+	if 0 <= health and health <= HEART_MAX:
 		for i in range(1, HEART_MAX+1):
 			var dir = HEART_DIRECTORY+str(i)
 			# Shows only the number of hearts based on the health
@@ -60,4 +75,5 @@ func update_hearts():
 	
 		
 func updateBossBar():
-	get_node("/root/Node/Camera2D/TextureProgress").value = bossHealth
+	# get_node("/root/Node/Camera2D/TextureProgress").value = bossHealth
+	pass

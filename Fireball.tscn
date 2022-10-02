@@ -15,7 +15,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[node name="Fireball" type="KinematicBody2D"]
 position = Vector2( 291, 103 )
 script = ExtResource( 2 )
 
