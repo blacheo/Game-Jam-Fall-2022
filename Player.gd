@@ -37,9 +37,13 @@ func _process(delta):
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
 		$AnimatedSprite.flip_h = false
+		$Gun.flip_h = false	
+		$Gun.position.x = $AnimatedSprite.position.x	 + 200
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1
-		$AnimatedSprite.flip_h = true	
+		$AnimatedSprite.flip_h = true
+		$Gun.flip_h = true
+		$Gun.position.x = $AnimatedSprite.position.x	 - 200
 		
 	
 	
