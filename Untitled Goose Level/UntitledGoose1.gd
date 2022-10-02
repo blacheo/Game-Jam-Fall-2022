@@ -1,5 +1,5 @@
-extends Node
-
+extends KinematicBody2D
+signal caught
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -16,5 +16,5 @@ func _ready():
 #	pass
 
 
-func _on_Exit_pressed():
-	get_tree().quit()
+func _on_Area2D_body_entered(body):
+	emit_signal("caught")
