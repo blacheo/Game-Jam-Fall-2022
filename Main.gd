@@ -16,7 +16,7 @@ func _on_Player_collided():
 
 func _process(delta):
 	get_node("/root/Node/Camera2D/TextureProgress").value = $CobraGoose.bossHealth
-	$CobraGoose.playerPos = Vector2($Player.position.x, $Player.position.y).normalized()
+	$CobraGoose.playerPos = Vector2($Player.position.x, $Player.position.y)
 	# $CobraGoose.sCenter = $Camera2D.get_camera_screen_center()
 
 

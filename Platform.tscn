@@ -4,7 +4,7 @@
 [ext_resource path="res://GI game jam Fall 2022/platform.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 965.75, 28 )
+extents = Vector2( 1187.38, 28 )
 
 [sub_resource type="SegmentShape2D" id=2]
 b = Vector2( 1, -1119 )
@@ -22,13 +22,19 @@ extents = Vector2( 195.5, 10 )
 position = Vector2( 0, 658 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1359.77, -25.5895 )
-scale = Vector2( 2.61924, 0.57193 )
+position = Vector2( 309, -655 )
+scale = Vector2( 3.22493, 0.57193 )
 texture = ExtResource( 1 )
-offset = Vector2( -149, -249 )
+offset = Vector2( 274.115, 851.503 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 309, -704.693 )
+scale = Vector2( 3.22493, 0.659649 )
+texture = ExtResource( 1 )
+offset = Vector2( 274.115, 851.503 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 975, -29 )
+position = Vector2( 1196.63, -29 )
 shape = SubResource( 1 )
 one_way_collision = true
 

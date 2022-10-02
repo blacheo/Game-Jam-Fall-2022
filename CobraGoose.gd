@@ -20,8 +20,8 @@ func _ready():
 
 
 func _process(delta):
-	if position.x > screen.x + 100:
-		position.x = screen.x
+	if position.x > 1700 + 100:
+		position.x = 1700
 	if bossHealth <= 0 and livesLeft > 0:
 		bossHealth = 100
 		multiplier += 1
@@ -32,11 +32,11 @@ func _process(delta):
 		charging = true
 	var velocity = Vector2.ZERO # The player's movement vector.
 	if !charging:
-		if (abs(position.x-screen.x) <= 50 or position.x <= 50):
+		if (abs(position.x-1700) <= 50 or position.x <= 50):
 			velocity.x = 0 	
 			dir *= -1
 			$AnimatedSprite.flip_h = !$AnimatedSprite.flip_h
-		if position.x <= fireballThresh:
+		if abs(position.x-playerPos.x) <= 50:
 			$AnimatedSprite.animation = "spit"
 			for _i in range(multiplier):
 				if flag:
@@ -44,7 +44,7 @@ func _process(delta):
 					get_parent().add_child(fb)
 					fb.velocity = playerPos
 					fb.position = position
-			flag = false
+					flag = false
 		else:
 			$AnimatedSprite.animation = "default"
 		velocity.x += dir * 2
@@ -53,13 +53,8 @@ func _process(delta):
 			velocity.x = 1
 		$AnimatedSprite.animation = "default"
 		$AnimatedSprite.flip_h = false
-		if position.x >= screen.x:
-			flag2 = true
-		if flag2:
-			velocity.x = -10
 	if abs(velocity.x) > 0:
 		velocity = velocity * speed * multiplier
 	position += velocity * delta
-	if position.x > fireballThresh:
-		flag = true
+	flag = true
 
