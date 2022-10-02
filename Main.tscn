@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Platform.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GI game jam Fall 2022/goose hp icon.png" type="Texture" id=4]
+
+[node name="Node" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 275, -33 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="Platform" parent="." instance=ExtResource( 2 )]
+position = Vector2( 968, 103 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 980, -428 )
+current = true
+zoom = Vector2( 1.9, 1.8 )
+
+[node name="Heart1" type="TextureRect" parent="Camera2D"]
+margin_left = -993.0
+margin_top = -545.0
+margin_right = 880.0
+margin_bottom = 1136.0
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 4 )
+stretch_mode = 1
+
+[node name="Heart2" type="TextureRect" parent="Camera2D"]
+margin_left = -857.0
+margin_top = -545.0
+margin_right = 1016.0
+margin_bottom = 1136.0
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 4 )
+stretch_mode = 1
+
+[node name="Heart3" type="TextureRect" parent="Camera2D"]
+margin_left = -716.0
+margin_top = -545.0
+margin_right = 1157.0
+margin_bottom = 1136.0
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 4 )
+stretch_mode = 1

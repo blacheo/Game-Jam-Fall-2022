@@ -3,7 +3,7 @@
 [ext_resource path="res://GI game jam Fall 2022/platform.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 268, 19 )
+extents = Vector2( 965.75, 28 )
 
 [node name="Platform" type="Area2D"]
 
