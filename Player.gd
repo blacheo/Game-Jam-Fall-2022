@@ -1,7 +1,5 @@
 extends KinematicBody2D 
 
-signal collided
-
 # Constants
 const ZERO_VELOCITY_Y = 6.7
 const RUN_SPEED = 350
