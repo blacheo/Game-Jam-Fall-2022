@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Platform.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://GI game jam Fall 2022/goose hp icon.png" type="Texture" id=4]
 [ext_resource path="res://GI game jam Fall 2022/Boss health bar.png" type="Texture" id=5]
 [ext_resource path="res://GI game jam Fall 2022/boss health bar filler (put behind).png" type="Texture" id=6]
+[ext_resource path="res://CobraGoose.tscn" type="PackedScene" id=7]
 
 [node name="Node" type="Node"]
 
@@ -68,3 +69,6 @@ value = 50.0
 texture_over = ExtResource( 5 )
 texture_progress = ExtResource( 6 )
 fill_mode = 1
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1372, -288 )
