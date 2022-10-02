@@ -23,7 +23,6 @@ func _on_UntitledGoose1_caught():
 	
 
 func _on_UntitledGoose2_caught():
-	print("test")
 	$Platform/Part2.toggle_off()
 	$UntitledGoose2.toggle_off()
 	$UntitledGoose3.toggle_on()

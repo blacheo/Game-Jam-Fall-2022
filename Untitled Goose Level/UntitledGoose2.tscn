@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Untitled Goose Level/UntitledGoose2.gd" type="Script" id=1]
+[ext_resource path="res://GI game jam Fall 2022/untitled goose run/untitled goose run 1.png" type="Texture" id=2]
+[ext_resource path="res://GI game jam Fall 2022/untitled goose run/untitled goose run 2.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="UntitledGoose2" type="KinematicBody2D"]
+position = Vector2( 768, 100 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="UntitledGooseCollision" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -51, -2, 18, -2, 12, 25, -21, 26 )
+disabled = true
+
+[node name="UntitledGooseSprite" type="AnimatedSprite" parent="UntitledGooseCollision"]
+position = Vector2( -7, -4 )
+scale = Vector2( 0.134824, 0.135965 )
+frames = SubResource( 1 )
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="UntitledGooseCollision2" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( -51, -2, 18, -2, 12, 25, -21, 26 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
