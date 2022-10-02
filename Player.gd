@@ -21,8 +21,8 @@ func shoot():
 	#timer.connect("timeout", self, "_on_timer_timeout")
 	#get_parent().add_child(timer)
 	#timer.start()
-	$Gun.animation = "fired"
-
+	#$Gun.animation = "fired"
+	
 	if $AnimatedSprite.flip_h:
 		$Position2D.position = $AnimatedSprite.position - Vector2(300, 0)
 		bullet.flip_h($AnimatedSprite.flip_h)
@@ -30,6 +30,8 @@ func shoot():
 	else:	
 		bullet.flip_h($AnimatedSprite.flip_h)
 		bullet.position = $Position2D.global_position
+	bullet.shoot(global_position)
+	$CooldownTimer.start()
 	
 
 func _process(delta):
@@ -37,15 +39,20 @@ func _process(delta):
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
 		$AnimatedSprite.flip_h = false
+		$Gun.flip_h = false
+		$Gun.position = $AnimatedSprite.position + Vector2(195,95)
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1
-		$AnimatedSprite.flip_h = true	
-		
+		$AnimatedSprite.flip_h = true
+		$Gun.flip_h = true
+		$Gun.position = $AnimatedSprite.position + Vector2(-195,95)
 	
+	if not $CooldownTimer.is_stopped():
+		$Gun.animation = "fired"
+	else:
+		$Gun.animation = "neutral"
 	
-	
-	if Input.is_action_just_pressed("shoot"):
-		#$Gun.animation = "neutral"
+	if Input.is_action_pressed("shoot") and $CooldownTimer.is_stopped():
 		shoot()
 	
 
@@ -59,9 +66,12 @@ func _process(delta):
 	position += velocity * delta
 	
 	if $AnimatedSprite.flip_h:
-		bullet.position -= Vector2(80,0) 
-	else:	
-		bullet.position += Vector2(80,0)
+		bullet.position -= Vector2(bullet.bulletSpeed, 0)
+	else:
+		bullet.position += Vector2(bullet.bulletSpeed,0)
+	#	bullet.position -= Vector2(80,0) 
+	#else:	
+	#	bullet.position += Vector2(80,0)
 	
 	#if bullet.position.x > get_viewport().get_visible_rect().size.x or bullet.position.x < 0:
 	#	bullet.access_node().queue_free()
