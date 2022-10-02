@@ -1,63 +1,74 @@
-extends KinematicBody2D
+extends Area2D
 
-# Constants
-const ZERO_VELOCITY_Y = 6.7
-const RUN_SPEED = 350
-const JUMP_SPEED = 400 # Pixels up
-const GRAVITY = 400
+export var speed = 400
+export var bulletSpeed = 20
 
-# Constants for heart
-const HEART_DIRECTORY = "/root/Node/Camera2D/Heart"
-const HEART_MAX = 3 # Make sure to create this number of heart nodes
+var bulletPath = preload("res://Bullet.tscn")
 
-# Variables
-var health = 3
-var bossHealth = 40
-var velocity = Vector2()
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
 
-func get_input():
-	velocity.x = 0
-	var right = Input.is_action_pressed('ui_right')
-	var left = Input.is_action_pressed('ui_left')
-	var jump = Input.is_action_just_pressed('ui_up')
+var bulletList = []
 
-	# $Heart1.visible = not $Heart1.visible
-	if is_on_floor() and jump:
-		velocity.y -= JUMP_SPEED
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
 
-	if right:
-		velocity.x += RUN_SPEED
+func shoot():
+	var bullet = bulletPath.instance()
+	#var timer = Timer.new()
+	#timer.connect("timeout", self, "_on_timer_timeout")
+	#get_parent().add_child(timer)
+	#timer.start()
+	$Gun.animation = "fired"
+
+	if $AnimatedSprite.flip_h:
+		$Position2D.position = $AnimatedSprite.position - Vector2(300, 0)
+		bullet.flip_h($AnimatedSprite.flip_h)
+		bullet.position = $AnimatedSprite.position
+		bullet.position.x -= 3
+		bullet.direction = -1
+	else:	
+		bullet.flip_h($AnimatedSprite.flip_h)
+		bullet.position = $AnimatedSprite.position
+		bullet.position.x += 300
+		
+	
+	add_child(bullet)
+	bulletList.append(bullet)
+
+func _process(delta):
+	var velocity = Vector2.ZERO # The player's movement vector.
+	if Input.is_action_pressed("move_right"):
+		velocity.x += 1
 		$AnimatedSprite.flip_h = false
-	if left:
-		velocity.x -= RUN_SPEED
+		$Gun.flip_h = false	
+		$Gun.position.x = $AnimatedSprite.position.x	 + 200
+	if Input.is_action_pressed("move_left"):
+		velocity.x -= 1	
 		$AnimatedSprite.flip_h = true
+		$Gun.flip_h = true
+		$Gun.position.x = $AnimatedSprite.position.x	 - 200
+		
+	for i in bulletList:	
+		i.position += Vector2(80,0) * i.direction
+	
+	
+	if Input.is_action_just_pressed("shoot"):
+		#$Gun.animation = "neutral"
+		shoot()
+	
 
-	update_hearts()
-	updateBossBar()
-	if abs(velocity.x) > 0 or abs(velocity.y) > ZERO_VELOCITY_Y:
+		
+	if abs(velocity.x) > 0:
+		velocity = velocity.normalized() * speed
 		$AnimatedSprite.animation = "running"
 	else:
-		$AnimatedSprite.animation = "idle"
-
-
-func _physics_process(delta):
-	velocity.y += GRAVITY * delta
-	get_input()
-	velocity = move_and_slide(velocity, Vector2(0, -1))
-
-
-func update_hearts():
-	# Makes sure that the number of hearts are within a valid range and loops over them
-	# Was tested for health = 0 to 5 (inclusive)
-	if 0 < health and health <= HEART_MAX:
-		for i in range(1, HEART_MAX+1):
-			var dir = HEART_DIRECTORY+str(i)
-			# Shows only the number of hearts based on the health
-			if i <= health:
-				get_node(dir).visible = true
-			else:
-				get_node(dir).visible = false
+		$AnimatedSprite.animation = "idle" 
 	
-		
-func updateBossBar():
-	get_node("/root/Node/Camera2D/TextureProgress").value = bossHealth
+	position += velocity * delta
+	
+	
+	#if bullet.position.x > get_viewport().get_visible_rect().size.x or bullet.position.x < 0:
+	#	bullet.access_node().queue_free()

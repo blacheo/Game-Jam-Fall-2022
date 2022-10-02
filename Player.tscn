@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://GI game jam Fall 2022/Goose idle 1.png" type="Texture" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://GI game jam Fall 2022/frames/goose run/goose run 2.png" type="Texture" id=9]
 [ext_resource path="res://GI game jam Fall 2022/frames/goose run/goose run 5.png" type="Texture" id=10]
 [ext_resource path="res://GI game jam Fall 2022/frames/goose run/goose run 3.png" type="Texture" id=11]
+[ext_resource path="res://GI game jam Fall 2022/misc/five seven 1.png" type="Texture" id=12]
+[ext_resource path="res://GI game jam Fall 2022/misc/five seven 2.png" type="Texture" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -30,17 +32,40 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Player" type="KinematicBody2D"]
-position = Vector2( 1, -19 )
-collision_layer = 15
-script = ExtResource( 1 )
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "fired",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "neutral",
+"speed": 5.0
+} ]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 1, -3, -78, 9, -160, 46, -227, 96, -251, 157, -251, 171, -191, 177, -136, 182, -82, 194, -23, 219, -18, 232, -17, 274, -20, 307, 26, 330, 112, 345, 151, 327, 152, 278, 102, 267, 87, 232, 95, 206, 165, 149, 214, 76, 218, -12, 183, -151, 207, -176, 262, -191, 300, -213, 300, -237, 175, -299, 144, -291, 124, -284, 57, -220, 51, -161, 55, -92, 57, -50 )
+[node name="Player" type="Area2D"]
+position = Vector2( 403, 273 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 1, 2 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 2
+frame = 1
 playing = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 0, -4, -182, 49, -258, 149, -76, 202, -20, 223, -26, 311, 109, 349, 147, 328, 153, 267, 100, 267, 86, 231, 130, 184, 203, 96, 224, -4, 186, -142, 230, -186, 297, -209, 297, -239, 183, -309, 115, -286, 45, -215, 56, -92 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 300, 0 )
+
+[node name="Gun" type="AnimatedSprite" parent="."]
+position = Vector2( 195, 85 )
+scale = Vector2( 0.530208, 0.481019 )
+frames = SubResource( 2 )
+animation = "fired"
